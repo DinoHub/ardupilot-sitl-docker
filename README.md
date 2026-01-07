@@ -8,10 +8,10 @@ DockerHub
 
 A pre-built Docker image is available on DockerHub at:
 
-https://hub.docker.com/r/radarku/ardupilot-sitl
+https://hub.docker.com/r/dhdevspace/ardupilot-sitl
 
-- To download it, run `docker pull radarku/ardupilot-sitl`
-- To run it, run `docker run -it --rm -p 5760:5760 radarku/ardupilot-sitl`
+- To download it, run `docker pull dhdevspace/ardupilot-sitl`
+- To run it, run `docker run -it --rm -p 5760:5760 dhdevspace/ardupilot-sitl`
 - To use it with [Docker Compose](https://docs.docker.com/compose/), add the following service to your `docker-compose.yml` file:
     - You can launch it with `docker-compose up -d`
     - If you update your `docker-compose.yml`, you can restart your container by running `docker-compose up -d` without getting the container ID and killing the container manually. See https://github.com/radarku/ardupilot-sitl-docker/issues/3
@@ -20,7 +20,7 @@ https://hub.docker.com/r/radarku/ardupilot-sitl
 ```yml
 services:
   ardupilot-sitl:
-    image: radarku/ardupilot-sitl
+    image: dhdevspace/ardupilot-sitl
     platform: linux/amd64
     tty: true
     ports:
@@ -32,18 +32,18 @@ Quick Start
 
 If you'd rather build the docker image yourself:
 
-`docker build --tag ardupilot github.com/radarku/ardupilot-sitl-docker`
+`docker build --tag ardupilot https://github.com/DinoHub/ardupilot-sitl-docker`
 
 You can now use the `--build-arg` option to specify which branch or tag in the ardupilot
 repository you'd like to use. Here's an example:
 
-`docker build --tag ardupilot --build-arg COPTER_TAG=Copter-4.0.1 github.com/radarku/ardupilot-sitl-docker`
+`docker build --tag ardupilot-sitl --build-arg COPTER_TAG=Copter-4.5.5 https://github.com/DinoHub/ardupilot-sitl-docker`
 
-If no COPTER_TAG is supplied, the build will use the default defined in the Dockerfile, currently set at Copter-4.0.3
+If no COPTER_TAG is supplied, the build will use the default defined in the Dockerfile, currently set at Copter-4.5.5
 
 To run the image:
 
-`docker run -it --rm -p 5760:5760 ardupilot`
+`docker run -it --rm -p 5760:5760 ardupilot-sitl`
 
 This will start an ArduCopter SITL on host TCP port 5760, so to connect to it from the host, you could:
 
@@ -54,11 +54,11 @@ Options
 
 There are a number of options available to configure the simulator, for example, to run an ArduRover instance on port 5761, you could:
 
-`docker run -it --rm -p 5761:5760 --env VEHICLE=APMrover2 ardupilot`
+`docker run -it --rm -p 5761:5760 --env VEHICLE=APMrover2 ardupilot-sitl`
 
 We also have an example `env.list` file which can help you maintain your options and called like so:
 
-`docker run -it --rm -p 5761:5760 --env-file env.list ardupilot`
+`docker run -it --rm -p 5761:5760 --env-file env.list ardupilot-sitl`
 
 The full list of options and their default values is:
 
