@@ -43,6 +43,9 @@ ENV PATH="/usr/local/bin:/root/.local/bin:${PATH}"
 
 RUN pip3 install --no-cache-dir MAVProxy pymavlink # Install MAVProxy
 
+# Inject default param values to enable MavLink on other ports
+RUN echo "SR1_EXTRA1 \t 4 \nSR1_EXTRA2 \t 4 \nSR1_EXTRA3 \t 4 \nSR1_EXT_STAT \t 4 \nSR1_PARAMS \t 4 \nSR1_POSITION \t 4 \nSR1_RAW_CTRL \t 0 \nSR1_RAW_SENS \t 4 \nSR1_RC_CHAN \t 0 \nSR2_ADSB \t 0 \nSR2_EXTRA1 \t 4 \nSR2_EXTRA2 \t 4 \nSR2_EXTRA3 \t 4 \nSR2_EXT_STAT \t 4 \nSR2_PARAMS \t 4 \nSR2_POSITION \t 4 \nSR2_RAW_CTRL \t 0 \nSR2_RAW_SENS \t 4 \nSR2_RC_CHAN \t 0 \n" >> /ardupilot/Tools/autotest/default_params/copter.parm
+
 # Finally the command
 ENV SITL_UDP_OUTPUT_ADDRESS=udp:127.0.0.1:14550
 SHELL ["/bin/bash", "-c"]

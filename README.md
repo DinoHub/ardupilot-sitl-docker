@@ -32,7 +32,7 @@ Quick Start
 
 If you'd rather build the docker image yourself:
 
-`docker build --tag ardupilot https://github.com/DinoHub/ardupilot-sitl-docker`
+`docker build --tag ardupilot-sitl https://github.com/DinoHub/ardupilot-sitl-docker`
 
 You can now use the `--build-arg` option to specify which branch or tag in the ardupilot
 repository you'd like to use. Here's an example:
@@ -84,7 +84,7 @@ docker run -it --rm -p 5761:5760 \
    --env ALT=276 \
    --env DIR=180 \
    --env SPEEDUP=2 \
-   ardupilot
+   dhdevspace/ardupilot-sitl
 ```
 
 Vehicles and their corresponding models are listed below:
